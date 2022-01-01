@@ -11,20 +11,23 @@
  */
 class Solution {
 public:
-    bool tr(TreeNode* left, TreeNode* right) {
-        if (!left || !right) {
-            return left == right;
-        }
+    bool subtree(TreeNode* root, TreeNode* subRoot) {
+        if (!root || !subRoot) return root == subRoot;
         
-        return (left->val == right->val && tr(left->left, right->left) && tr(left->right, right->right));
-        
+        return root->val == subRoot->val && subtree(root->left,  subRoot->left) && subtree(root->right,  subRoot->right);
     }
     
+    bool tr(TreeNode* root, TreeNode* subRoot) {
+        if (!root) return false;
+        if (subtree(root, subRoot)) return true;
+        
+        return tr(root->left, subRoot) || tr(root->right, subRoot);
+    }
     
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
         if (!root) return false;
         if (!subRoot) return true;
-        if (tr(root, subRoot)) return true;
-        return tr(root->left, subRoot) || tr(root->right, subRoot);
+        
+        return tr(root, subRoot);
     }
 };
