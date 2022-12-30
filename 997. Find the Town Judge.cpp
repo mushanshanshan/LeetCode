@@ -1,3 +1,9 @@
+/*
+ * @Date: 2022-12-04 21:46:29
+ * @LastEditors: Mushan wwd137669793@gmail.com
+ * @LastEditTime: 2022-12-29 15:32:25
+ * @FilePath: /LeetCode/997. Find the Town Judge.cpp
+ */
 class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& trust) {
